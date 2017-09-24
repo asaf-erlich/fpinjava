@@ -59,7 +59,13 @@ public class CollectionUtilities {
   public static <T, U> U foldRight(List<T> ts,
                                    U identity,
                                    Function<T, Function<U, U>> f) {
-    throw new RuntimeException("To be implemented");
+    U result = identity;
+    final List<T> reversed = copy(ts);
+    Collections.reverse(reversed);
+    for (T t : reversed) {
+      result = f.apply(t).apply(result);
+    }
+    return result;
   }
 
   public static <T> List<T> append(List<T> list, T t) {

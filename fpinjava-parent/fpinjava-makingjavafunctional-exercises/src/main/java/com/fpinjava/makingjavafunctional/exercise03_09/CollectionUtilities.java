@@ -70,10 +70,14 @@ public class CollectionUtilities {
   }
 
   public static <T> List<T> prepend(T t, List<T> list) {
-    throw new RuntimeException("To be implemented");
+    List<T> ts = copy(list);
+    ts.add(0, t);
+    return Collections.unmodifiableList(ts);
   }
 
   public static <T> List<T> reverse(List<T> list) {
-    throw new RuntimeException("To be implemented");
+    if (list == null || list.isEmpty()) return list;
+
+    return append(reverse(tail(list)), head(list));
   }
 }
