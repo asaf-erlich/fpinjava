@@ -26,14 +26,23 @@ public class CollectionUtilities {
   }
 
   public static <T> T head(List<T> list) {
-    throw new RuntimeException("To be implemented");
+    if (list == null || list.isEmpty()) {
+      throw new RuntimeException("list " + list + " is null or empty");
+    }
+
+    return list.get(0);
   }
 
   private static <T> List<T > copy(List<T> ts) {
-    throw new RuntimeException("To be implemented");
+    return new ArrayList<>(ts);
   }
 
   public static <T> List<T> tail(List<T> list) {
-    throw new RuntimeException("To be implemented");
+    if (list == null || list.isEmpty()) {
+      throw new RuntimeException("list " + list + " is null or empty");
+    }
+    final List<T> tail = copy(list);
+    tail.remove(0);
+    return Collections.unmodifiableList(tail);
   }
 }

@@ -1,23 +1,24 @@
 package com.fpinjava.makingjavafunctional.exercise03_03;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.*;
 
 
 public class CollectionUtilities {
 
   public static <T> List<T > list() {
-    throw new RuntimeException("To be implemented");
+    return Collections.unmodifiableList(new ArrayList<>());
   }
 
   public static <T> List<T > list(T t) {
-    throw new RuntimeException("To be implemented");
+    return Collections.singletonList(t);
   }
   public static <T> List<T > list(List<T> ts) {
-    throw new RuntimeException("To be implemented");
+    return Collections.unmodifiableList(new ArrayList<>(ts));
   }
 
   @SafeVarargs
   public static <T> List<T > list(T... t) {
-    throw new RuntimeException("To be implemented");
+    return Collections.unmodifiableList(Arrays.stream(t).collect(Collectors.toList()));
   }
 }
