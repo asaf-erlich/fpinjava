@@ -2,6 +2,7 @@ package com.fpinjava.makingjavafunctional.exercise03_13;
 
 
 import com.fpinjava.common.Function;
+import com.fpinjava.makingjavafunctional.exercise03_11.Range;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,7 +105,7 @@ public class CollectionUtilities {
   }
 
   public static List<Integer> range(int start, int end) {
-    throw new RuntimeException("To be implemented");
+    return unfold(start, Range.increment, i -> i < end);
   }
 
 }
