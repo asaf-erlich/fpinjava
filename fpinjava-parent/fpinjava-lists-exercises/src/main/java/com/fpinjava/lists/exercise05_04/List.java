@@ -49,9 +49,7 @@ public abstract class List<A> {
 
     @Override
     public List<A> drop(int n) {
-      if (n == 0) return this;
-
-      throw new IllegalStateException("drop called en empty list with n != 0 [n=" + n + "]");
+      return this;
     }
   }
 
@@ -94,7 +92,13 @@ public abstract class List<A> {
 
     @Override
     public List<A> drop(int n) {
-      throw new RuntimeException("To be implemented");
+      return drop(this, n).eval();
+    }
+
+    private TailCall<List<A>> drop(final List<A> list, final int n) {
+      if (n <= 0 || list.isEmpty()) return ret(list);
+
+      return sus(() -> drop(list.tail(), n - 1));
     }
   }
 
