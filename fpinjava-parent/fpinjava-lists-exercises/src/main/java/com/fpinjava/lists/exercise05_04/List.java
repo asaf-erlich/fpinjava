@@ -49,7 +49,9 @@ public abstract class List<A> {
 
     @Override
     public List<A> drop(int n) {
-      throw new RuntimeException("To be implemented");
+      if (n == 0) return this;
+
+      throw new IllegalStateException("drop called en empty list with n != 0 [n=" + n + "]");
     }
   }
 
