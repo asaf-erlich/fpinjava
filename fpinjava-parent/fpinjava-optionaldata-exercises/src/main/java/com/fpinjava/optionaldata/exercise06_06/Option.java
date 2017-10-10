@@ -24,7 +24,7 @@ public abstract class Option<A> {
   }
 
   public Option<A> filter(Function<A, Boolean> f) {
-    throw new IllegalStateException("Not implemented yet");
+    return flatMap(a -> f.apply(a) ? this : none());
   }
 
   private static class None<A> extends Option<A> {
