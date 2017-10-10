@@ -96,7 +96,7 @@ public abstract class List<A> {
 
     @Override
     public List<A> filter(Function<A, Boolean> f) {
-      throw new IllegalStateException("To be implemented");
+      return this;
     }
   }
 
@@ -200,7 +200,7 @@ public abstract class List<A> {
 
     @Override
     public List<A> filter(Function<A, Boolean> f) {
-      throw new IllegalStateException("To be implemented");
+      return foldRight(list(), item -> filteredList -> f.apply(item) ? filteredList.cons(item) : filteredList);
     }
   }
 
