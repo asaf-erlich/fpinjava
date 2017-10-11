@@ -91,10 +91,22 @@ public abstract class Option<A> {
   }
 
   public static <A, B> Function<Option<A>, Option<B>> lift(Function<A, B> f) {
-    throw new IllegalStateException("Not implemented yet");
+    return optionA -> {
+      try {
+        return optionA.map(f);
+      } catch (Throwable t) {
+        return Option.none();
+      }
+    };
   }
 
   public static <A, B> Function<A, Option<B>> hlift(Function<A, B> f) {
-    throw new IllegalStateException("Not implemented yet");
+    return a -> {
+      try {
+        return Option.some(f.apply(a));
+      } catch (Throwable t) {
+        return Option.none();
+      }
+    };
   }
 }
