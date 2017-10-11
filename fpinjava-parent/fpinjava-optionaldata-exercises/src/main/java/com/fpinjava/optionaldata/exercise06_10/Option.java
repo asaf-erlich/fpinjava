@@ -110,10 +110,9 @@ public abstract class Option<A> {
     };
   }
 
-  public static <A, B, C> Option<C> map2(Option<A> a,
-                                         Option<B> b,
+  public static <A, B, C> Option<C> map2(Option<A> optionA,
+                                         Option<B> optionB,
                                          Function<A, Function<B, C>> f) {
-    throw new IllegalStateException("Not implemented yet");
+    return optionA.flatMap(a -> optionB.map(b -> f.apply(a).apply(b)));
   }
-
 }
